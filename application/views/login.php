@@ -1,6 +1,8 @@
+<?php echo validation_errors(); ?>
+
 <div class="header">
   <h3>Welcome to KYC's to-do list. Get started by logging in</h3>
-  <?php echo form_open(); ?>
+  <?php echo form_open('Login/validateLogin'); ?>
 
   Username: <br/>
   <input type="text" name="username"/><br/><br/>
