@@ -1,15 +1,27 @@
 var Todo = Backbone.View.extend({
+  tagName: 'li',
+  
+  events: {
+    'click a': function(){
+      tasks.remove(this.model)
+    },
+    'click input': function(){
+      this.model.set('done', this.model.get('status') == 0 ? 1 : 0)
+      Backbone.sync("update", this.model)
+    }
+  },
 
-  // events: {
-  //   'click .completed': 'handleClick'
+  // handleComplete: function() {
+  //   this.model.set(‘done’, this.model.get(‘done’) == 0 ? 1 : 0)
+  //   Backbone.sync(“update”, this.model)
   // },
 
-  // handleClick: function() {
-  //   this.model.select();
+  // handleDelete: function() {
+  //   tasks.remove(this.model)    
   // },
   
   render: function() {
-    this.$el.html(this.template());
+    this.$el.html(this.template(this.model.attributes));
     return this;
   },
 

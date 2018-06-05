@@ -11,6 +11,8 @@
 <script type="text/javascript" src="../js/scripts.js"></script>
 <div id="app"></div>
 <script src="../js/lib/templateUrl.js"></script>
+<script src="../js/models/task.js"></script>
+<script src="../js/collections/tasks.js"></script>
 <script src="../js/views/todo.js"></script>
 <script src="../js/views/todoList.js"></script>
 <script src="../js/views/app.js"></script>

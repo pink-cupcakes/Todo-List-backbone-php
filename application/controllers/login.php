@@ -4,8 +4,8 @@ class Login extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
-		if($this->session->userdata('test')) {
-			redirect('Dashboard/home');
+		if($this->session->userdata('username')) {
+			redirect('Chores/home');
 		}
 	}
 
@@ -25,7 +25,7 @@ class Login extends CI_Controller {
 		if ($this->form_validation->run() === false) {
 			$this->load->view('login');
 		} else {
-			redirect('Dashboard/home');
+			redirect('Chores/home');
 		}
 	}
 
@@ -34,11 +34,11 @@ class Login extends CI_Controller {
 		$this->load->model('user');
 		$check = $this->user->validate();
 		if($check) {
-			// $newdata = array(
-			// 	'username' 	=> $this->input->post('username'),
-			// 	'logged_in' => true
-			// );
-			$this->session->set_userdata('test', 1);
+			$data = array(
+        'user_logged_in'  =>  TRUE,
+        'username' => $this->input->post('username')
+      );
+			$this->session->set_userdata($data, 1);
 			return true;
 		} else {
 			$this->form_validation->set_message('verifyUser', 'The username and password do not match.');
