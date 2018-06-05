@@ -17,6 +17,14 @@ class Login extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function signup() {
+		$data['title'] = 'KYC Homepage';
+
+		$this->load->view('header', $data);
+		$this->load->view('signup');
+		$this->load->view('footer');
+	}
+
 	public function validateLogin() {
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
@@ -44,5 +52,35 @@ class Login extends CI_Controller {
 			$this->form_validation->set_message('verifyUser', 'The username and password do not match.');
 			return false;
 		}
+	}
+
+	public function addUser() {
+
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required|callback_newUser');
+
+		if ($this->form_validation->run() === false) {
+			$this->load->view('signup');
+		} else {
+			redirect('Chores/home');
+		}
+	}
+
+	public function newUser() {
+
+		$this->load->model('user');
+		$check = $this->user->exists();
+		if(!$check) {
+			$this->user->addUser();
+			$data = array(
+        'user_logged_in'  =>  TRUE,
+        'username' => $this->input->post('username')
+      );
+			$this->session->set_userdata($data, 1);
+			return true;
+		} else {
+			$this->form_validation->set_message('newUser', 'The username is already in use.');
+			return false;
+		}		
 	}
 }

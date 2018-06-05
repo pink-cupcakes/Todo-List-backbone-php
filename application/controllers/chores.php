@@ -30,9 +30,20 @@ class Chores extends CI_Controller {
     $this->load->model('tasks');
     $taskArr = $this->tasks->getList($this->session->userdata('username'));
 
-    // $taskArr = array('a', 'b', 'c', 'd', 'e');
-
     header('Content-Type: application/json');
     echo json_encode( $taskArr );
+  }
+
+  public function delete($taskID)
+  {
+    $this->load->model('tasks');
+    $this->tasks->deleteTask($taskID);
+
+    $this->tasks();
+  }
+
+  public function update($taskID)
+  {
+    $this->load->model('tasks');   
   }
 };

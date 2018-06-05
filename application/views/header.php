@@ -7,6 +7,6 @@
 
 </head>
 <body>
-  <div class="welcome">
+  <div class="col-xs-1" align="center">
     <h1>Welcome to KYC</h1>
   </div>
