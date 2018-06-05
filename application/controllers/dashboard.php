@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
 
@@ -10,8 +9,9 @@ class Dashboard extends CI_Controller {
     }
   }
 
-  public function home() {
-    $data['title'] = 'User signed in';
+  public function home()
+  {
+    $data['title'] = 'Dashboard';
 
     $this->load->view('header', $data);
     $this->load->view('content');
@@ -22,13 +22,5 @@ class Dashboard extends CI_Controller {
   {
     $this->session->sess_destroy();
     redirect('Login/index');
-  }
-
-  public function chores() {
-    $data['title'] = 'Your chores';
-
-    $this->load->view('header', $data);
-    $this->load->view('chorelist');
-    $this->load->view('footer');    
   }
 }

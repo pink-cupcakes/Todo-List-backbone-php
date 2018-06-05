@@ -4,3 +4,8 @@
 <IfModule !authz_core_module>
     Deny from all
 </IfModule>
+
+RewriteEngine on
+
+RewriteCond $1 !^(index\.php|css|(.*)\.css|(.*)\.js|(.*)\.jpg|(.*)\.jpeg|(.*)\.png|(.*)\.bmp|(.*)\.gif|(.*)\.doc|(.*)\.shtml|robots\.txt|favicon\.ico)
+RewriteRule ^(.*)$ ./index.php/$1 [L]
