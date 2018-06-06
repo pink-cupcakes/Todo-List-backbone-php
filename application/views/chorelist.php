@@ -1,7 +1,7 @@
 <table class="table">
   <tr>
-    <th>Chore</th>
     <th>Completed</th>
+    <th>Chore</th>
     <th>Date</th>
   </tr>
 </table>

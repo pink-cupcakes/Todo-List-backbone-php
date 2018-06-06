@@ -25,6 +25,20 @@ class Chores extends CI_Controller {
     redirect('Login/index');
   }
 
+  public function createValidate() {
+    $this->form_validation->set_rules('name', 'Taskname', 'required|callback_createTask');
+
+    $this->form_validation->run();
+    redirect('Chores/home');
+  }
+
+  public function createTask()
+  {
+    $this->load->model('tasks');
+    $deadline = date($this->input->post('date'));
+    $this->tasks->createTask($deadline);
+  }
+
   public function tasks()
   {
     $this->load->model('tasks');
