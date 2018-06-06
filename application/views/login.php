@@ -1,6 +1,6 @@
 <?php echo validation_errors(); ?>
 
-<div class="header">
+<div class="col-xs-1" align="center">
   <h3>Welcome to KYC's to-do list. Get started by logging in</h3>
   <?php echo form_open('Login/validateLogin'); ?>
 
